@@ -32,7 +32,7 @@ email
 password
 GET /auth/login
 
-- redirects to / if usuario conectado
+- redirige a / si el usuario conectado
 renderiza el formulario de inicio de sesión
 POST /auth/login
 
@@ -103,5 +103,5 @@ DELETE /anime/:id
 
 
 [wireframe](https://wireframepro.mockflow.com/view/M79b1be2408dd7d3753b53fb51632d72e1608378012239)
-[Slides](https://github.com/LucasFeli/animePreview)
+
 
