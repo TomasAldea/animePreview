@@ -17,54 +17,19 @@ añadir nuevos animes y publicar comentarios sobre estos.
 
 ## ROUTES:
 
-- GET /
-
-- render the homepage
-GET /auth/signup
-
-- redirige a / si el usuario inició sesión
-muestra el formulario de registro
-POST /auth/signup
-
-- redirige a / si el usuario inició sesión:
-username
-email
-password
-GET /auth/login
-
-- redirige a / si el usuario conectado
-renderiza el formulario de inicio de sesión
-POST /auth/login
-
-- redirige a / si el usuario inició sesión
-body:
-username
-password
-POST /auth/logout
-
-body: (empty)
-GET /animes
-
-- renderiza la lista de animes 
-get /animes/create
-- renderiza el formulario de creacion de un anime
-POST /animes/create
-
-- Redirige a / si la usuario es anónimo
-body:
-name
-rate
-description
-GET /anime/:id
-
-- muestra la página de detalles del anime
-
-- Redirige a /login si la usuario es anónimo
-body: (vacío: el usuario ya está almacenado en la sesión)
-
-- eliminar o editar un anime
-PUT /anime/:id
-DELETE /anime/:id
+- GET / : renders the homepage 
+- GET /auth/signup  muestra el formulario de registro,  redirige a / si el usuario inició sesión 
+- POST /auth/signup: crea un nuevo usuario (body: {username, email, password }), y redirige a / si el usuario inició sesión
+- GET /auth/login: renderiza el formulario de inicio de sesión y redirige a / si el usuario conectado 
+- POST /auth/login: loguea el usuario (body: {username, password}) y redirige a / si el usuario inició sesión 
+- POST /auth/logout
+- GET /animes: renderiza la lista de animes 
+- GET /animes/create: renderiza el formulario de creacion de un anime 
+- POST /animes/create: crea un nuevo anime y redirige a / si la usuario es anónimo (body: { name, rate, description, image } 
+- GET /anime/:id : renderiza la página de detalles del anime (con comentarios), y redirige a /login si el usuario es anónimo 
+- GET /anime/:id/edit : renderiza el formulario para editar un anime 
+- PUT /anime/:id/edit : edita un anime 
+- DELETE /anime/:id : elimina un anime 
 
 ## Models
 # User model
