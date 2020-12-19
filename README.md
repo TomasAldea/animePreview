@@ -6,14 +6,14 @@ Se trata de una app que contendra una base de datos de animes, cuyo obejtivo es 
 añadir a su perfil los favoritos y publicar comentarios sobre sus animes.
 
 # User Stories
-404: como usuario, quiero ver una buena página 404 cuando voy a una página que no existe para saber que fue mi culpa.
-500: Como usuario, quiero ver una bonita página de error cuando el súper equipo lo arruine para que sepa que no es mi culpa.
-página de inicio: como usuario, quiero poder acceder a la página de inicio para ver de qué se trata la aplicación e iniciar sesión y registrarme.
-registrarse - Como usuario quiero registrarme en la página web para poder ver todos los eventos a los que podría asistir.
-inicio de sesión: como usuario, quiero poder iniciar sesión en la página web para poder volver a mi cuenta.
-cerrar sesión: como usuario, quiero poder cerrar sesión en la página web para asegurarme de que nadie acceda a mi cuenta.
-lista de eventos - Como usuario quiero ver todos los eventos disponibles para poder elegir a cuáles quiero asistir.
-Lista de otras características fuera del alcance de los MVP
+- 404: como usuario, quiero ver una buena página 404 cuando voy a una página que no existe para saber que fue mi culpa.
+- 500: Como usuario, quiero ver una bonita página de error cuando el súper equipo lo arruine para que sepa que no es mi culpa.
+- página de inicio: como usuario, quiero poder acceder a la página de inicio para ver de qué se trata la aplicación e iniciar sesión y registrarme.
+- registrarse - Como usuario quiero registrarme en la página web para poder ver todos los eventos a los que podría asistir.
+- inicio de sesión: como usuario, quiero poder iniciar sesión en la página web para poder volver a mi cuenta.
+- cerrar sesión: como usuario, quiero poder cerrar sesión en la página web para asegurarme de que nadie acceda a mi cuenta.
+- lista de eventos - Como usuario quiero ver todos los eventos disponibles para poder elegir a cuáles quiero asistir.
+- Lista de otras características fuera del alcance de los MVP
 
 ## User profile:
 
