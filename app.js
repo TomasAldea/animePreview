@@ -31,7 +31,13 @@ app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
+const authRoutes = require("./routes/index"); 
+
+app.use('/', authRoutes );
 
 
-
+app.listen(4000, () => {
+    console.log("server running on port 4000");
+});
+  
 module.exports = app;
