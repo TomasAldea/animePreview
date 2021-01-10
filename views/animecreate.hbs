@@ -1,20 +1,57 @@
-
-<div id="create-anime">
-  <h2>Add Anime</h2>
-  <form action="/create" method="POST">
-    <label for="input-username">Title</label>
-    <input type="text" id="title" name="title" placeholder="Title"/>
-        <label for="input-username">Category</label>
-    <input type="text" id="title" name="title" placeholder="Category"/>
-        <label for="input-username">Rate</label>
-    <input type="text" id="title" name="title" placeholder="Rate"/>
-        <label for="input-username">Description</label>
-    <input type="text" id="title" name="title" placeholder="Description"/>
- 
-    <!-- falta 1 imput para que el usuario pueda cargar una imagen -->
-
-    <button type="submit">Create anime</button>
- 
-    {{!-- error message will be added here --}}
-  </form>
-</div>
+<div class="row mt-5">
+  <div class="col-md-6 m-auto">
+    <div class="card card-body">
+      <h1 class="text-center mb-3">
+        <i class="fas fa-user-plus"></i> Add Anime
+      </h1>
+      <form action="/create" method="POST">
+        <div class="form-group">
+          <label for="name">Title</label>
+          <input
+            type="text"
+            id="title"
+            name="title"
+            class="form-control"
+            placeholder="Enter title"
+            
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Category</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="form-control"
+            placeholder="Enter Email"
+            
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Rate</label>
+          <input
+            type="text"
+            id="title"
+            name="title"
+            class="form-control"
+            placeholder="Enter Email"
+            
+          />
+         </div>
+          <div class="form-group">
+          <label for="email">Description</label>
+          <input
+            type="text"
+            id="title"
+            name="title"
+            class="form-control"
+            placeholder="Description"
+            
+          />
+         </div>
+            
+          <button type="submit" class="btn btn-primary btn-block">
+          Create anime
+        </button>
+        </div>
+        

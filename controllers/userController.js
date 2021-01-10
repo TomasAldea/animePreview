@@ -3,6 +3,10 @@ const NewUser = require("../models/User.model");
 const { Error } = require("mongoose");
 
 
+
+const loginView = (req, res) => { 
+  res.render("logIn")
+}
 //-----------------render gignup form page ---------------------//
 const signupView = (req, res) => { 
   res.render("signup")
@@ -11,10 +15,7 @@ const signupView = (req, res) => {
 const indexView = (req, res) => {  
   res.render("home")
 }
-//----------------render anime create form page----------------------//
-const createAnimeView = (req, res) => {  
-  res.render("animecreate")
-}
+
 
 //---Mongoose error = { code 11000, message: "email is not unique"}--//
 const isMongooseValidationError = (error) => 
@@ -75,7 +76,7 @@ const signup = async (req, res) => {
 module.exports = { 
     signupView,
     indexView,
+    loginView,
     signup,
-    createAnimeView,
     checkCredentials,
  };

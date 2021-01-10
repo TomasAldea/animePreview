@@ -5,7 +5,7 @@ const router = express.Router();
 const {
     signupView,
     indexView,
-    createAnimeView,
+    loginView,
     signup,
     checkCredentials,
 } = require("../controllers/userController");
@@ -14,7 +14,7 @@ const {
 router
     .get("/", indexView)
     .get("/signup", signupView)
-    .get("/create", createAnimeView)
+    .get("/logIn",loginView)
     .post("/signup", checkCredentials, signup)
   
 
