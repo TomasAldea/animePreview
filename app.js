@@ -10,6 +10,7 @@ const connectDb = require("./configs/db.config")
 const logger = require('morgan');
 const path = require('path');
 const movieRoutes = require("./routes/index")
+const connectSession = require("./configs/session.config.js")
 
 connectDb()
 
@@ -17,6 +18,8 @@ const app = express();
 
 // require database configuration
 require('./configs/db.config');
+
+connectSession(app)
 
 // Middleware Setup
 app.use(logger('dev'));
