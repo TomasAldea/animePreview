@@ -6,7 +6,8 @@ const AnimeSchema = new mongoose.Schema({
     rate: Number,
     image: String,
     description: String,
-    
+    owner: { type: mongoose.Schema.Types.ObjectId, ref: "User.model" }
+
 })
 
 module.exports = mongoose.model("Anime.model", AnimeSchema)

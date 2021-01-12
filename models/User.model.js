@@ -17,6 +17,9 @@ const UserSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
+  createAnime: [
+     { type: mongoose.Schema.Types.ObjectId, ref: "Anime.model" } 
+    ]
 });
 
 module.exports = mongoose.model("User.model", UserSchema);
