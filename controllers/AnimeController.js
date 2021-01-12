@@ -1,6 +1,5 @@
 const Animes = require("../models/Anime.model");
 
-
 //----------------render anime create form page----------------------//
 const getAnimes = async(req, res)=> {
     try{
