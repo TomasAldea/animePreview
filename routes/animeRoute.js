@@ -8,8 +8,8 @@ const {
 
 router
     .get("/", userSecureRoute, getAnimes)
-    .get("/:animeId",getAnime)
-    .post("/",createAnime)
+    .get("/:animeId",userSecureRoute, getAnime)
+    .post("/",userSecureRoute, createAnime)
     
     
     
