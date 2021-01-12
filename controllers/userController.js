@@ -3,7 +3,11 @@ const NewUser = require("../models/User.model");
 const { Error } = require("mongoose");
 
 
-
+//--- vista temporal para testear ruta segura ---//
+const secureView = (req, res) => { 
+  res.render("securetest")
+}
+//-----------------render loging form page ---------------------//
 const loginView = (req, res) => { 
   res.render("logIn")
 }
@@ -59,7 +63,7 @@ const signup = async (req, res) => {
     const user2 = await NewUser.create({ username, email, passwordHash: hashPassword })
     console.log("user", user2);
 
-    // req.session.currentUser = user._id // para persitir la sesion (falta revisar)
+   // req.session.currentUser = user._id // para persitir la sesion (falta revisar)
     res.send("user created successful");
 
   } catch (err) {
@@ -73,10 +77,56 @@ const signup = async (req, res) => {
   }
 };
 
+//---Login user---//
+
+const login = async (req, res) => {
+  try {
+    const { password, email } = req.body;
+    const user = await NewUser.findOne({ email });
+    if (!user) {
+      return res.send("user does not exist");
+    }
+    const verifyPassword = await bcrypt.compare(password, user.passwordHash); // comparamos password con hash password de la data base
+    if (!verifyPassword) {
+      return res.send("wrong credentials");
+    }
+    req.session.currentUser = user._id // persistimos la sesion
+    console.log("login success")
+    return res.redirect("/");
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+//---secure route middleware---//
+
+const userSecureRoute = (req, res, next) => {  
+  const isUser = req.session.currentUser 
+  if (!isUser) {
+    console.log("login first to see this page")
+    res.redirect("/login")
+   // res.send("create acc first");
+  }
+  next();
+};
+
+//---logout end session---//
+
+const logout = (req, res, next) => {
+  console.log("log out success")
+  req.session.destroy();
+  res.redirect("/")
+};
+
+
 module.exports = { 
     signupView,
     indexView,
     loginView,
     signup,
     checkCredentials,
- };
+    login,
+    secureView,
+    userSecureRoute,
+    logout,
+   };
