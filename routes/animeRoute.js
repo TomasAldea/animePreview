@@ -1,11 +1,13 @@
 const express = require('express');
+const {getAnime,getAnimes,createAnime} = require("../controllers/AnimeController")
 const router = express.Router();
 
-
-const {createAnimeView } = require("../controllers/AnimeController")
-
 router
-    .get("/create", createAnimeView)
+    .get("/",getAnimes)
+    .get("/:animeId",getAnime)
+    .post("/",createAnime)
+    
+    
     
   
 

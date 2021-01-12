@@ -1,1 +1,18 @@
-<h1>Anime list</h1>
+<div>
+    <h1>Anime list!!!</h1>
+    <div class="column">
+        <div class="card_2">
+            {{> animeCreate}}
+            {{#each anime}}
+            <img src="{{image}}">
+             <h1>Anime : {{name}}</h1>
+            <a href="/animes/{{_id}}">More info</a>
+           
+               
+            
+
+            {{/each}}
+        </div>
+    </div>
+
+</div>

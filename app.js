@@ -9,10 +9,14 @@ const mongoose = require('mongoose');
 const connectDb = require("./configs/db.config")
 const logger = require('morgan');
 const path = require('path');
+
 const movieRoutes = require("./routes/index")
 const connectSession = require("./configs/session.config.js")
 
+
 connectDb()
+
+hbs.registerPartials(`${__dirname}/views/partials/`)
 
 const app = express();
 
@@ -39,7 +43,7 @@ const authRoutes = require("./routes/index");
 
 
 app.use('/', authRoutes );
-app.use("/",animeRoutes)
+app.use("/animes",animeRoutes)
 
 
 app.listen(4000, () => {
