@@ -10,7 +10,7 @@ const connectDb = require("./configs/db.config")
 const logger = require('morgan');
 const path = require('path');
 
-const movieRoutes = require("./routes/index")
+
 const connectSession = require("./configs/session.config.js")
 
 
@@ -27,8 +27,15 @@ connectSession(app)
 
 // Middleware Setup
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
+app.use((req, res, next) => {
+  const { _method } = req.body;
+  if (_method) {
+    req.method = _method;
+  }
+  next();
+});
+
 app.use(cookieParser());
 
 // Express View engine setup
@@ -46,7 +53,7 @@ app.use('/', authRoutes );
 app.use("/animes",animeRoutes)
 
 
-app.listen(4000, () => {
+app.listen(3000, () => {
     console.log("server running on port 4000");
 });
   
