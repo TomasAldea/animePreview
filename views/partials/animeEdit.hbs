@@ -2,9 +2,10 @@
   <div class="col-md-6 m-auto">
     <div class="card card-body">
       <h1 class="text-center mb-3">
-        <i class="fas fa-user-plus"></i> Add Anime
+        <i class="fas fa-user-plus"></i> Edit Anime
       </h1>
-      <form action="/animes" method="POST">
+      <form action="{{action}}" method="{{method}}">
+          <input type="text" name= "_method"value="{{restMethod}}" hidden>
         <div class="form-group">
           <label for="name">Title</label>
           <input type="text" id="name" name="name" class="form-control" placeholder="Enter title" />
@@ -22,9 +23,9 @@
           <input type="text" id="description" name="description" class="form-control" placeholder="Description" />
         </div>
 
-        <button type="submit" class="btn btn-primary btn-block">
-          Create anime
+        <button type="{{btnText}}" class="btn btn-primary btn-block">
+          Edit anime
         </button>
 
-    </form>
+
     </div>
