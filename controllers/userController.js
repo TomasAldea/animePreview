@@ -90,9 +90,9 @@ const login = async (req, res) => {
     if (!verifyPassword) {
       return res.send("wrong credentials");
     }
-    req.session.currentUser = user._id // persistimos la sesion
+    req.session.currentUser = user // persistimos la sesion
     console.log("login success")
-    return res.redirect("/");
+    return res.redirect("/animes");
   } catch (err) {
     console.log(err);
   }

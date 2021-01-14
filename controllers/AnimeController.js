@@ -21,7 +21,7 @@ const getAnimes = async (req, res) => {
   try {
     const anime = await Animes.find().lean();
     const animesDeleted = anime.map(animeDeleteOptions);
-    console.log(animesDeleted)
+  
     res.render("animes", { anime: animesDeleted });
   } catch (err) {
     console.log(err);
@@ -46,6 +46,7 @@ const getAnime = async (req, res) => {
 };
 
 const createAnime = async (req, res) => {
+  console.log("SESSION:", req.session.currentUser._id)
   try {
     const { name, category, rate, description } = req.body;
     const anime = await Animes.create({
@@ -92,10 +93,22 @@ const deleteAnime = async (req, res) => {
   }
 };
 
+const getUser = async (req, res) => {
+  try {
+    const oneUser = await User.findById(req.session.currentUser._id)
+    .populate("createAnime").lean();
+    console.log(oneUser)
+    res.render("userprofile", oneUser);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 module.exports = {
   getAnimes,
   getAnime,
   createAnime,
   updateAnime,
   deleteAnime,
+  getUser,
 };
