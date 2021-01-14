@@ -16,7 +16,6 @@ const {
 
 
 router
-    .get("/securetest", userSecureRoute, secureView)
     .get("/", indexView)
     .get("/signup", signupView)
     .get("/logIn",loginView)

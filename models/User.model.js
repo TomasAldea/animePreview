@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-const UserSchema = new mongoose.Schema({
+const UserSchema = new Schema({
   username: {
     type: String,
     unique: true,
@@ -18,7 +19,7 @@ const UserSchema = new mongoose.Schema({
     trim: true,
   },
   createAnime: [
-     { type: mongoose.Schema.Types.ObjectId, ref: "Anime.model" } 
+     { type: Schema.Types.ObjectId, ref: "Anime.model" } 
     ]
 });
 
