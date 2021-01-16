@@ -1,1 +1,17 @@
 <h1>user profile</h1>
+  {{> animeCreate}}
+
+  <div>
+        <div class="column">
+        <div class="card_2">
+          
+            {{#each oneUser.createAnime}}
+            <img src="{{image}}">
+             <h1>Anime : {{name}}</h1>
+            <a href="/animes/{{_id}}">More info</a>
+            {{>deleteAnime}}
+            {{/each}}
+        </div>
+    </div>
+
+</div>
