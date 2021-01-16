@@ -11,7 +11,7 @@ const dbOptions = {
 
 async function seedDb(){
     try {
-        await mongoose.connect(process.env.MONGODB_URL, dbOptions)
+        await mongoose.connect(process.env.MONGODB_URI, dbOptions)
         const animes = await Anime.create(data)
         console.log(animes)
         mongoose.connection.close()
