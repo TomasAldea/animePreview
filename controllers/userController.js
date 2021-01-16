@@ -104,7 +104,7 @@ const userSecureRoute = (req, res, next) => {
   const isUser = req.session.currentUser 
   if (!isUser) {
     console.log("login first to see this page")
-    res.redirect("/login")
+    res.render("logIn")
    // res.send("create acc first");
   }
   next();
