@@ -1,12 +1,13 @@
 const mongoose = require("mongoose")
+const Schema = mongoose.Schema;
 
-const AnimeSchema = new mongoose.Schema({
+const AnimeSchema = new Schema({
     name: String,
     category : String,
     rate: Number,
     image: String,
     description: String,
-    owner: { type: mongoose.Schema.Types.ObjectId, ref: "User.model" }
+    owner: { type: Schema.Types.ObjectId, ref: "User.model" } 
 
 })
 

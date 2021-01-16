@@ -50,7 +50,7 @@ const authRoutes = require("./routes/index");
 
 
 app.use('/', authRoutes );
-app.use("/animes",animeRoutes)
+app.use("/animes", animeRoutes)
 
 
 app.listen(3000, () => {
