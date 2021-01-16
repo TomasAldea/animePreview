@@ -53,7 +53,7 @@ app.use('/', authRoutes );
 app.use("/animes", animeRoutes)
 
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
     console.log("server running on port 4000");
 });
   
