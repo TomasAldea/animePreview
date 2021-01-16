@@ -59,7 +59,7 @@ const createAnime = async (req, res) => {
     await User.findByIdAndUpdate(req.session.currentUser._id, {
       $push: { createAnime: anime._id },
     });
-    console.log("Animes", anime);
+
     res.redirect("/animes");
   } catch (err) {
     console.log(err);
@@ -97,12 +97,14 @@ const getUser = async (req, res) => {
   try {
     const oneUser = await User.findById(req.session.currentUser._id)
     .populate("createAnime").lean();
-    console.log(oneUser)
-    res.render("userprofile", oneUser);
+    console.log("User prueba" , oneUser)
+    res.render("userprofile", {oneUser});
   } catch (err) {
     console.log(err);
   }
 };
+
+
 
 module.exports = {
   getAnimes,
