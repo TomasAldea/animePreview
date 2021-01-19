@@ -1,7 +1,4 @@
 
-<<<<<<< HEAD
-=======
-
 * {
     box-sizing: border-box;
   }
@@ -141,7 +138,6 @@
     height: 100vh;
     opacity: 0.7;
    
-
 }
 
 .view{
@@ -152,8 +148,6 @@
     width: 100%;
 }
 
-
->>>>>>> 2e207596b818814c6023af0dec5e4b0ff4011e18
 .barra-navegacion {
     display: grid;
 }
