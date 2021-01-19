@@ -1,5 +1,4 @@
 
-
 .barra-navegacion {
     display: grid;
 }
@@ -30,5 +29,12 @@
     margin-right: auto;
     font-family: Arial, Helvetica, sans-serif;  
    
+}
+
+.background {
+    background-image: url('/images/4bb8e931640dcff50f8e670c86919e1b.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
 }
 

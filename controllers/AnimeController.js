@@ -104,8 +104,6 @@ const getUser = async (req, res) => {
   }
 };
 
-
-
 module.exports = {
   getAnimes,
   getAnime,
