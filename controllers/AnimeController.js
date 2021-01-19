@@ -1,6 +1,8 @@
 const Animes = require("../models/Anime.model");
 const { userSecureRoute } = require("./userController");
 const User = require("../models/User.model");
+const fileParser = require("./../configs/cloudinary.config")
+
 
 const deleteFormOptions = (animeId) => ({
   action: `/animes/${animeId}`,
@@ -35,6 +37,7 @@ const editFormOptions = (animeId) => ({
   restMethod: "PATCH",
 });
 
+
 const getAnime = async (req, res) => {
   try {
     const { animeId } = req.params;
@@ -54,8 +57,11 @@ const createAnime = async (req, res) => {
       category,
       rate,
       description,
+      image: req.file.path,
       owner: req.session.currentUser._id,
     });
+    console.log("Esta es la imagen", req.file.path)
+
     await User.findByIdAndUpdate(req.session.currentUser._id, {
       $push: { createAnime: anime._id },
     });
@@ -66,15 +72,24 @@ const createAnime = async (req, res) => {
   }
 };
 
+
 const updateAnime = async (req, res) => {
   try {
     const { animeId } = req.params;
     const { name, category, rate, description } = req.body;
+    let imageUrl;
+  if (req.file) {
+    imageUrl = req.file.path;
+  } else {
+    imageUrl = req.body.existingImage;
+  }
+
     const updatedCelebrity = await Animes.findByIdAndUpdate(animeId, {
       name,
       category,
       rate,
       description,
+      image: imageUrl
     });
     res.redirect(`/animes/${animeId}`);
   } catch (err) {

@@ -1,4 +1,159 @@
 
+<<<<<<< HEAD
+=======
+
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+  }
+  
+  /* Nav Style Start */
+  
+  header {
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+  }
+  
+  .toggler {
+    display: none;
+  }
+  
+  
+  
+  .logo {
+    display: flex;
+    height: 80px;
+    width: 80px;
+    margin-left: 16px;
+  }
+  
+  nav ul {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    padding: 16px;
+    background: #585858;
+    left: -100%;
+    transition: all .5s;
+    list-style: none;
+  }
+  
+  nav li {
+    margin-bottom: 16px;
+    margin-left: 16px;
+  }
+  
+  nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    text-shadow: 2px 2px 4px rgba(31, 31, 31, 0.658);
+    text-transform: uppercase;
+    
+  }
+  
+  nav a:hover {
+    color: rgb(91, 180, 253);
+    transition: ease-in .1s;
+  }
+  
+  .toggler:checked ~ nav ul {
+    left: 0;
+  }
+  
+  .burger {
+    position: absolute;
+    font-size: 35px;
+    color: white;
+    text-shadow: 2px 2px 4px rgb(31, 31, 31);
+    top: 0;
+    right: 0;
+    margin-right: 16px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  
+  .toggler:checked ~ nav a {
+    opacity: 1;
+  }
+  
+  
+  /* Desktop Screen Format */
+  
+  @media screen and (min-width: 800px) {
+    .burger {
+      display: none;
+    }
+  
+    header {
+      display: grid;
+      grid-template-columns: 1fr auto minmax(700px, 3fr);
+    }
+  
+    nav {
+      
+      display: flex;
+      grid-column: 3/4;
+      justify-content: flex-end;
+      align-items: center;
+    }
+  
+    nav ul {
+      all: unset;
+      list-style: none;
+      display: flex;
+      
+    }
+  
+    nav li {
+      margin-bottom: 0;
+      margin-right: 16px;
+      
+    }
+  
+    nav a {
+      opacity: 1;
+    }
+  
+  }
+  
+
+  .animeList img{
+        height: 768px;
+        width: 768px;
+  }
+
+  
+  .background {
+    background-image: url('/images/263296.jpeg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    z-index: 100;
+    height: 100vh;
+    opacity: 0.7;
+   
+
+}
+
+.view{
+    position: absolute;
+    top:0;
+    left:0;
+    height: 100%;
+    width: 100%;
+}
+
+
+>>>>>>> 2e207596b818814c6023af0dec5e4b0ff4011e18
 .barra-navegacion {
     display: grid;
 }
