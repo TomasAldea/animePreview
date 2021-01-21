@@ -13,40 +13,59 @@
   <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
  
 </head>
-
-<body >
-
-  <div class="background"></div>
-
-
-<div class="view">
+<!-- Cambios navbar-->
+<body>
   {{#if currentUser}}
   <nav class="navbar navbar-expand-sm navbar-dark" style="background-color:#2081c3;">
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-item nav-link active" href="/"> Home</a>
-        <a class="nav-item nav-link" href="/logout">log out</a>
-        <a class="nav-item nav-link" href="/animes">anime List</a>
-        <a class="nav-item nav-link" href="/animes/userprofile">user Profile</a>
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+        <img src="images/Anlogo.png" alt="" width="120" height="70" class="d-inline-block align-top">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link active" href="/"> Home</a>
+          <a class=" nav-link" href="/animes">anime List</a>
+          <a class="nav-link" href="/animes/userprofile">user Profile</a>
+          <a class="nav-link" href="/logout">log out</a>
+
+        </div>
       </div>
     </div>
   </nav>
   {{else}}
 
-    <nav class="navbar navbar-expand-sm navbar-dark" style="background-color:#2081c3;">
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-item nav-link active" href="/"> Home</a>
-        <a class="nav-item nav-link" href="/signup">sign up</a>
-        <a class="nav-item nav-link" href="/login">log in</a>
+  <nav class="navbar navbar-expand-sm navbar-dark" style="background-color:#2081c3;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+        <img src="images/Anlogo.png" alt="" width="120" height="70" class="d-inline-block align-top">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link active" href="/"> Home</a>
+          <a class=" nav-link" href="/signup">sign up</a>
+          <a class="nav-link" href="/login">log in</a>
+
+        </div>
       </div>
     </div>
   </nav>
 
+
+
   {{/if}}
 
+
+  <!--
   <header>
-  
+    <img class="logo" src="images/Anlogo.png" alt="panda">
     <input id="toggler"  class="toggler"type="checkbox"  >
     <label for="toggler" class="burger" >
       <span><i class="fas fa-bars"></i></span>
@@ -64,7 +83,7 @@
       </ul>
     </nav>
   </header>
-
+-->
 
   {{{body}}}
   </div>
