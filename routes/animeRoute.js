@@ -15,7 +15,7 @@ const fileParser = require("./../configs/cloudinary.config")
 
 
 router
-  .get("/", userSecureRoute, getAnimes)
+  .get("/", getAnimes)
   .get("/userprofile", userSecureRoute, getUser)
   .get("/:animeId", userSecureRoute, getAnime)
   .post("/", fileParser.single("image"), userSecureRoute, createAnime)
