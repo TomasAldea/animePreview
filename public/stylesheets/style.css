@@ -128,17 +128,6 @@
         width: 768px;
   }
 
-  
-  .background {
-    background-image: url('/images/263296.jpeg');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: 100% 100%;
-    z-index: 100;
-    height: 100vh;
-    opacity: 0.7;
-   
-}
 
 .view{
     position: absolute;
@@ -181,9 +170,71 @@
 }
 
 .background {
-    background-image: url('/images/4bb8e931640dcff50f8e670c86919e1b.jpg');
+    
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 100%;
 }
 
+ /* anime list test */
+ 
+ .view-group {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+.thumbnail
+{
+  margin-bottom: 30px;
+  padding: 0px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+}
+
+.item.list-group-item
+{
+  float: none;
+  width: 100%;
+  background-color: #fff;
+  margin-bottom: 30px;
+  -ms-flex: 0 0 100%;
+  flex: 0 0 100%;
+  max-width: 100%;
+  padding: 0 1rem;
+  border: 0;
+}
+.item.list-group-item .img-event {
+  float: left;
+  width: 30%;
+}
+
+.item.list-group-item .list-group-image
+{
+  margin-right: 10px;
+}
+.item.list-group-item .thumbnail
+{
+  margin-bottom: 0px;
+  display: inline-block;
+}
+.item.list-group-item .caption
+{
+  float: left;
+  width: 70%;
+  margin: 0;
+}
+
+.item.list-group-item:before, .item.list-group-item:after
+{
+  display: table;
+  content: " ";
+}
+
+.item.list-group-item:after
+{
+  clear: both;
+}
