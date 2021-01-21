@@ -1,15 +1,49 @@
-<div>
-    <h1>Anime list!!!</h1>
-    <div class="column">
-        <div class="card_2">
-          
-            {{#each anime}}
-            <img src="{{image}}">
-             <h1>Anime : {{name}}</h1>
-            <a href="/animes/{{_id}}">More info</a>
-            {{>deleteAnime}}
-            {{/each}}
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 my-3">
+            <div class="pull-right">
+                <div class="btn-group">
+                    <button class="btn btn-info" id="list">
+                        List View
+                    </button>
+                    <button class="btn btn-danger" id="grid">
+                        Grid View
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
-
-</div>
+    {{#each anime}}
+    
+    <div id="products" class="row view-group">
+        <div class="item col-xs-4 col-lg-4">
+            <div class="thumbnail card">
+                <div class="img-event">
+                    <img class="group list-group-image img-fluid" src="{{image}}" alt="" />
+                </div>
+                <div class="caption card-body">
+                    <h4 class="group card-title inner list-group-item-heading">
+                        {{name}}</h4>
+                    <p class="group inner list-group-item-text">
+                        {{description}}.</p>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6">
+                            <p class="lead">
+                                Rate:{{rate}}</p>
+                        </div>
+                        <div class="col-xs-12 col-md-6">
+                            <p class="lead">
+                                Category: {{category}}</p>
+                        </div>
+                        <div class="col-xs-12 col-md-6">
+                            <a class="btn btn-success" href="/animes/{{_id}}">More info</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/each}}

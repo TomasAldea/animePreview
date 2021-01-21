@@ -15,14 +15,15 @@ const fileParser = require("./../configs/cloudinary.config")
 
 
 router
-  .get("/", userSecureRoute, getAnimes)
-  .get("/userprofile", userSecureRoute, getUser)
-  .get("/:animeId", userSecureRoute, getAnime)
-  .post("/", fileParser.single("image"), userSecureRoute, createAnime)
-  .patch("/:animeId",fileParser.single("image"), updateAnime)
-  .delete("/:animeId", deleteAnime);
+  .get("/animes", getAnimes)
+  .get("/animes/userprofile", userSecureRoute, getUser)
+  .get("/animes/:animeId", userSecureRoute, getAnime)
+  .post("/animes/", fileParser.single("image"), userSecureRoute, createAnime)
+  .patch("/animes/:animeId",fileParser.single("image"), updateAnime)
+  .delete("/animes/:animeId", deleteAnime)
 
 module.exports = router;
+
 
 
 

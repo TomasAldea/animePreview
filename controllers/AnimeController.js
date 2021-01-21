@@ -52,15 +52,18 @@ const createAnime = async (req, res) => {
   console.log("SESSION:", req.session.currentUser._id)
   try {
     const { name, category, rate, description } = req.body;
+    let imgRequire;
+    if (req.file !== undefined) {
+      imgRequire = req.file.path
+    }
     const anime = await Animes.create({
       name,
       category,
       rate,
       description,
-      image: req.file.path,
+      image: imgRequire,
       owner: req.session.currentUser._id,
     });
-    console.log("Esta es la imagen", req.file.path)
 
     await User.findByIdAndUpdate(req.session.currentUser._id, {
       $push: { createAnime: anime._id },
@@ -112,14 +115,14 @@ const getUser = async (req, res) => {
   try {
     const oneUser = await User.findById(req.session.currentUser._id)
     .populate("createAnime").lean();
+   
+    const animes = oneUser.createAnime.map(animeDeleteOptions);
     console.log("User prueba" , oneUser)
-    res.render("userprofile", {oneUser});
+    res.render("userprofile", {oneUser,  animes } );
   } catch (err) {
     console.log(err);
   }
 };
-
-
 
 module.exports = {
   getAnimes,

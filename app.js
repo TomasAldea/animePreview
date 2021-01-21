@@ -55,7 +55,7 @@ const authRoutes = require("./routes/index");
 
 
 app.use('/', authRoutes );
-app.use("/animes", animeRoutes)
+app.use("/", animeRoutes)
 
 
 app.listen(process.env.PORT, () => {
