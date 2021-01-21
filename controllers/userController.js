@@ -51,7 +51,7 @@ const signup = async (req, res) => {
     const isAlreadyUser = await NewUser.findOne({ email });
     
     if (isAlreadyUser) {
-      return res.send("user already exists");
+      return res.render("signup", {message: "this email already exist"});
     }
     if(!hasCorrectPasswordFormat(password)){
       return res.send("incorrect password format")
