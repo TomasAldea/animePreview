@@ -20,9 +20,10 @@ router
   .get("/:animeId", userSecureRoute, getAnime)
   .post("/", fileParser.single("image"), userSecureRoute, createAnime)
   .patch("/:animeId",fileParser.single("image"), updateAnime)
-  .delete("/:animeId", deleteAnime);
+  .delete("/:animeId", deleteAnime)
 
 module.exports = router;
+
 
 
 
