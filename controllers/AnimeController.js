@@ -24,7 +24,7 @@ const getAnimes = async (req, res) => {
     const anime = await Animes.find().lean();
     const animesDeleted = anime.map(animeDeleteOptions);
   
-    res.render("animes", { anime: animesDeleted });
+    res.render("animes", { anime: animesDeleted , class: 'backgroundColor'  });
   } catch (err) {
     console.log(err);
   }
@@ -42,7 +42,7 @@ const getAnime = async (req, res) => {
   try {
     const { animeId } = req.params;
     const oneAnime = await Animes.findById(animeId).lean();
-    res.render("anime-detail", { ...oneAnime, ...editFormOptions(animeId) });
+    res.render("anime-detail", { ...oneAnime, ...editFormOptions(animeId) , class: 'backgroundColor' });
   } catch (err) {
     console.log(err);
   }
@@ -118,7 +118,7 @@ const getUser = async (req, res) => {
    
     const animes = oneUser.createAnime.map(animeDeleteOptions);
     console.log("User prueba" , oneUser)
-    res.render("userprofile", {oneUser,  animes } );
+    res.render("userprofile", {oneUser,  animes , class: 'backgroundColor' } );
   } catch (err) {
     console.log(err);
   }

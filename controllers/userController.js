@@ -3,21 +3,17 @@ const NewUser = require("../models/User.model");
 const { Error } = require("mongoose");
 
 
-//--- vista temporal para testear ruta segura ---//
-const secureView = (req, res) => { 
-  res.render("securetest")
-}
 //-----------------render loging form page ---------------------//
 const loginView = (req, res) => { 
-  res.render("logIn")
+  res.render("logIn", {class: 'home' })
 }
 //-----------------render gignup form page ---------------------//
 const signupView = (req, res) => { 
-  res.render("signup")
+  res.render("signup",  {class: 'home' })
 }
 //-----------------render home page---------------------//
 const indexView = (req, res) => {  
-  res.render("home")
+  res.render("home",  {class: 'home' })
 }
 
 
@@ -130,7 +126,6 @@ module.exports = {
     signup,
     checkCredentials,
     login,
-    secureView,
     userSecureRoute,
     logout,
    };

@@ -12,14 +12,13 @@
   <!--anime list style cdn: -->
   <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
   <!--anime detail style cdn: -->
-  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
  
 </head>
 <!-- Cambios navbar-->
-<body>
+<body class="{{class}}">
   {{#if currentUser}}
-  <nav class="navbar navbar-expand-sm navbar-dark" style="background-color:#2081c3;">
+  <nav class="navbar navbar-expand-sm navbar-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="/">
         <img src="../images/Anlogo.png" alt="" width="120" height="70" class="d-inline-block align-top">
@@ -41,7 +40,7 @@
   </nav>
   {{else}}
 
-  <nav class="navbar navbar-expand-sm navbar-dark" style="background-color:#2081c3;">
+  <nav class="navbar navbar-expand-sm navbar-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="/">
         <img src="images/Anlogo.png" alt="" width="120" height="70" class="d-inline-block align-top">
@@ -53,6 +52,7 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <a class="nav-item nav-link active" href="/"> Home</a>
+          <a class=" nav-link" href="/animes">anime List</a>
           <a class=" nav-link" href="/signup">sign up</a>
           <a class="nav-link" href="/login">log in</a>
 
