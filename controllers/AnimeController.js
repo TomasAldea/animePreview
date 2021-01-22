@@ -57,12 +57,15 @@ const createAnime = async (req, res) => {
     if (req.file !== undefined) {
       imgRequire = req.file.path
     }
+    var url = trailer
+    url = url.replace('/watch?v=','/embed/')
+    console.log("url replace:", url) 
     const anime = await Animes.create({
       name,
       category,
       rate,
       description,
-      trailer,
+      trailer: url,
       image: imgRequire,
       owner: req.session.currentUser._id,
     });
@@ -119,7 +122,6 @@ const getUser = async (req, res) => {
     .populate("createAnime").lean();
    
     const animes = oneUser.createAnime.map(animeDeleteOptions);
-    console.log("User prueba" , oneUser)
     res.render("userprofile", {oneUser,  animes , class: 'backgroundColor' } );
   } catch (err) {
     console.log(err);
