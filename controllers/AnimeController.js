@@ -43,6 +43,7 @@ const getAnime = async (req, res) => {
     const { animeId } = req.params;
     const oneAnime = await Animes.findById(animeId).lean();
     res.render("anime-detail", { ...oneAnime, ...editFormOptions(animeId) , class: 'backgroundColor' });
+    console.log(trailer)
   } catch (err) {
     console.log(err);
   }
@@ -51,7 +52,7 @@ const getAnime = async (req, res) => {
 const createAnime = async (req, res) => {
   console.log("SESSION:", req.session.currentUser._id)
   try {
-    const { name, category, rate, description } = req.body;
+    const { name, category, rate, description, trailer } = req.body;
     let imgRequire;
     if (req.file !== undefined) {
       imgRequire = req.file.path
@@ -61,6 +62,7 @@ const createAnime = async (req, res) => {
       category,
       rate,
       description,
+      trailer,
       image: imgRequire,
       owner: req.session.currentUser._id,
     });
