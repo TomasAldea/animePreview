@@ -48,13 +48,17 @@ const checkCredentials = (req, res, next) => {
 const signup = async (req, res) => {
   try {
     const { password, username, email } = req.body;
-    const isAlreadyUser = await NewUser.findOne({ email });
+    const isAlreadyEmail = await NewUser.findOne({ email });
+    const isAlreadyName = await NewUser.findOne({ username });
     
-    if (isAlreadyUser) {
+    if (isAlreadyEmail) {
       return res.render("signup", {message: "this email already exist"});
     }
+    if (isAlreadyName) {
+      return res.render("signup", {message: "this name already exist"});
+    }
     if(!hasCorrectPasswordFormat(password)){
-      return res.send("incorrect password format")
+      return res.render("signup", {message: "incorrect password format"});
     }
 
     const saltRounds = 10;
@@ -63,8 +67,7 @@ const signup = async (req, res) => {
     const user2 = await NewUser.create({ username, email, passwordHash: hashPassword })
     console.log("user", user2);
 
-   // req.session.currentUser = user._id // para persitir la sesion (falta revisar)
-    res.send("user created successful");
+    return res.render("logIn", {message: "user create success!"});
 
   } catch (err) {
    if (isMongooseValidationError(err)) {
@@ -84,14 +87,13 @@ const login = async (req, res) => {
     const { password, email } = req.body;
     const user = await NewUser.findOne({ email });
     if (!user) {
-      return res.send("user does not exist");
+      return res.render("logIn", {message: "email does not exist"});
     }
     const verifyPassword = await bcrypt.compare(password, user.passwordHash); // comparamos password con hash password de la data base
     if (!verifyPassword) {
-      return res.send("wrong credentials");
+      return res.render("logIn", {message: "wrong password"});
     }
     req.session.currentUser = user // persistimos la sesion
-    console.log("login success")
     return res.redirect("/animes");
   } catch (err) {
     console.log(err);

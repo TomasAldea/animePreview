@@ -1,11 +1,20 @@
 
-{{>animeEdit}}
+<!--
 <div class="container">
     <div class="row">
         <div class="col-lg-12 my-3">
             <div class="pull-right">
                 <div class="btn-group">
-
+                    <button class="btn btn-info" id="list">
+                        List View
+                    </button>
+                    <button class="btn btn-danger" id="grid">
+                        Grid View
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
                 </div>
             </div>
         </div>
@@ -40,4 +49,36 @@
             </div>
         </div>
     </div>
-  
+  -->
+
+  <div class="container">
+    <div class="row">
+        <hr>
+    </div><!--.row -->
+</div><!--./container -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h4>{{name}}</h4>
+            <p>
+                
+            </p><img src="{{image}}" class="img-responsive center-block" alt="anime img">
+            {{description}}
+            <p>
+                <small>Rate: {{rate}}</a><br>
+                Category: {{category}}</small>
+            </p>
+            
+        </div><!--.col -->
+        
+        <div class="col-md-8">
+            <div class="vid">
+                <iframe width="560" height="315" src="//www.youtube.com/embed/ac7KhViaVqc" allowfullscreen=""></iframe>
+            </div><!--./vid -->
+            
+        </div><!--.col -->
+        
+    </div><!--./row -->
+    
+</div><!--./container -->
