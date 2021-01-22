@@ -24,7 +24,7 @@ const getAnimes = async (req, res) => {
     const anime = await Animes.find().lean();
     const animesDeleted = anime.map(animeDeleteOptions);
   
-    res.render("animes", { anime: animesDeleted });
+    res.render("animes", { anime: animesDeleted , class: 'backgroundColor'  });
   } catch (err) {
     console.log(err);
   }
@@ -42,7 +42,8 @@ const getAnime = async (req, res) => {
   try {
     const { animeId } = req.params;
     const oneAnime = await Animes.findById(animeId).lean();
-    res.render("anime-detail", { ...oneAnime, ...editFormOptions(animeId) });
+    res.render("anime-detail", { ...oneAnime, ...editFormOptions(animeId) , class: 'backgroundColor' });
+    console.log(trailer)
   } catch (err) {
     console.log(err);
   }
@@ -51,16 +52,20 @@ const getAnime = async (req, res) => {
 const createAnime = async (req, res) => {
   console.log("SESSION:", req.session.currentUser._id)
   try {
-    const { name, category, rate, description } = req.body;
+    const { name, category, rate, description, trailer } = req.body;
     let imgRequire;
     if (req.file !== undefined) {
       imgRequire = req.file.path
     }
+    var url = trailer
+    url = url.replace('/watch?v=','/embed/')
+    console.log("url replace:", url) 
     const anime = await Animes.create({
       name,
       category,
       rate,
       description,
+      trailer: url,
       image: imgRequire,
       owner: req.session.currentUser._id,
     });
@@ -117,8 +122,7 @@ const getUser = async (req, res) => {
     .populate("createAnime").lean();
    
     const animes = oneUser.createAnime.map(animeDeleteOptions);
-    console.log("User prueba" , oneUser)
-    res.render("userprofile", {oneUser,  animes } );
+    res.render("userprofile", {oneUser,  animes , class: 'backgroundColor' } );
   } catch (err) {
     console.log(err);
   }
