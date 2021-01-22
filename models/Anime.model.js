@@ -7,6 +7,7 @@ const AnimeSchema = new Schema({
     rate: Number,
     image:  String,
     description: String,
+    trailer: String,
     owner: { type: Schema.Types.ObjectId, ref: "User.model" } 
 
 })
