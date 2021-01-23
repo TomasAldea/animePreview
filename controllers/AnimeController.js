@@ -77,7 +77,7 @@ const createAnime = async (req, res) => {
     // https://www.youtube.com/watch?v=cN0ZvBL1Ia4
     let url = trailer
     url = url.replace('/watch?v=','/embed/')
-    // url = url.replace('.be/','be.com/embed/')
+    url = url.replace('.be/','be.com/embed/')
     console.log("url replace:", url) 
     const anime = await Animes.create({
       name,

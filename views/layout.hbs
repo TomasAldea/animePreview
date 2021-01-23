@@ -17,25 +17,34 @@
 </head>
 <!-- Cambios navbar-->
 
-<body class="{{class}}">
+<body class="{{class}} preload">
   {{#if currentUser}}
   <nav class="navbar navbar-expand-sm navbar-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/"></a>
-      <img class="logo-position" src="../images/Anlogo.png" alt="" width="120" height="70" class="d-inline-block align-top">
-      <img style="margin-top: -17px;" src="../images/4c6af264375eb9e.gif" alt="" width="120" height="70" class="d-inline-block align-top">
+      <a class="navbar-brand" href="/animes">
+      <img class="logo-position" src="/images/Anlogo.png" alt="" width="120" height="70" class="d-inline-block align-top">
+      </a>
+      <img style="margin-top: -17px;" src="/images/4c6af264375eb9e.gif" alt="" width="120" height="70" class="d-inline-block align-top">
       <button style="background: #5a5a5ac7;" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
         aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a style="color: black;" class="nav-link" href="/"> Home</a>
-          <a style="color: black;" class=" nav-link" href="/animes">anime List</a>
-          <a style="color: black;" class="nav-link" href="/animes/userprofile">user Profile</a>
-          <a style="color: black;" class="nav-link" href="/logout">log out</a>
-
+          <a style="color: black;" class="nav-link" href="/animes"> Home</a>
+          <a style="color: black;" class="nav-link 	d-md-none " href="/animes/userprofile">user Profile</a>
+          <a style="color: black;" class="nav-link 	d-md-none " href="/logout">log out</a>
+          
         </div>
+        <div class="dropdown d-none d-md-block">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              My dashboard <i class="fas fa-user"></i>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="/animes/userprofile"><i class="far fa-edit"></i> My Profile</a>
+              <a class="dropdown-item" href="/logout"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+            </div>
+          </div>
       </div>
     </div>
   </nav>
@@ -43,8 +52,9 @@
 
   <nav class="navbar navbar-expand-sm navbar-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/"></a>
-      <img class="logo-position" src="../images/Anlogo.png" alt="" width="120" height="70" class="d-inline-block align-top">
+      <a class="navbar-brand" href="/">
+        <img class="logo-position" src="../images/Anlogo.png" alt="" width="120" height="70" class="d-inline-block align-top">
+      </a>
       <img style="margin-top: -17px;" src="../images/4c6af264375eb9e.gif" alt="" width="120" height="70" class="d-inline-block align-top">
       <button style="background: #5a5a5ac7;" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
         aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,9 +63,7 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <a style="color: black;" class="nav-link" href="/"> Home</a>
-          <a style="color: black;" class=" nav-link" href="/animes">anime List</a>
-          <a style="color: black;" class=" nav-link" href="/signup">sign up</a>
-          <a style="color: black;" class="nav-link" href="/login">log in</a>
+          <a style="color: black;" class=" nav-link" href="/animes">Anime List</a>
 
         </div>
       </div>
@@ -69,14 +77,25 @@
   {{{body}}}
   </div>
 
-  <script src="/javascripts/script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+  <div class="goUp" onclick="topFunction(this)">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+<div id="footer"> 
+  <div>AnimePreview®</div>
+
+  <div>
+  <img src="../images/facebook (1).png" alt="">
+  <img src="../images/instagram.png" alt="">
+  <img src="../images/gorjeo.png" alt="">
+  </div>  
+</body>
+ <script src="/javascripts/script.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
     crossorigin="anonymous"></script>
-
-
-
-
-</body>
-
 </html>
+ 
+
+
