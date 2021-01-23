@@ -26,13 +26,13 @@
         <div class="form-group">
           <label for="description">Description</label>
           <textarea type="text" id="description" cols="30" rows="4" name="description" class="form-control"
-            placeholder="Description" value="{{rate}}"></textarea>
+            placeholder="Description" value="">{{description}}</textarea>
         </div>
         <div class="form-group">
           <i class="far fa-images"></i> <label for="image-input">Image:</label>
           <input type="file" id="image-input" name="image" class="form-control-file" placeholder="image" />
-        </div>
-  
+          <img style="width: 30%;" src="{{image}}" >
+         </div>
         <button type="{{btnText}}" class="btn btn-primary btn-block">
           Edit anime
         </button>
