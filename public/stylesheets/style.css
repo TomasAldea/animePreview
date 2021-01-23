@@ -1,6 +1,16 @@
 .navbar {
-  background-color: #bfbfbf;
   box-shadow: 2px 2px 4px 3px #dedede;
+  background-color: white;
+}
+
+.logo-position {
+  margin-left: -41px;
+  margin-right: 34px;
+}
+
+.navbar-toggler {
+  background-color: #000000bd;
+  box-shadow: 2px 3px 7px 0px #000000;
 }
 
 .viewtittle {
@@ -22,6 +32,19 @@ background-color: #f1f1f1;
 .img-fluid {
   box-shadow: 3px 3px 6px 0px grey;
 }
+
+.btn  {
+  margin-bottom: 5px;
+  box-shadow: 1px 2px 3px 1px grey;
+}
+
+.btn-success {
+  color: #fff;
+  background-color: #22b24c;
+  font-family: fantasy;
+}
+
+
 
  /* anime list */
  
