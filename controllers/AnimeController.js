@@ -3,11 +3,11 @@ const { userSecureRoute } = require("./userController");
 const User = require("../models/User.model");
 const fileParser = require("./../configs/cloudinary.config")
 
-
+/*
 const animeEditView = (req, res) => { 
   res.render("editview")
 }
-
+*/
 
 const deleteFormOptions = (animeId) => ({
   action: `/animes/${animeId}`,
@@ -26,8 +26,9 @@ function animeDeleteOptions(oneAnime) {
 
 const getAnimes = async (req, res) => {
   try {
-    const anime = await Animes.find().lean();
+    const anime = await Animes.find().lean().populate("owner")
     const animesDeleted = anime.map(animeDeleteOptions);
+    
   
     res.render("animes", { anime: animesDeleted , class: 'backgroundColor'  });
   } catch (err) {
@@ -59,7 +60,6 @@ const getAnimeEdit = async (req, res) => {
     const { animeId } = req.params;
     const oneAnime = await Animes.findById(animeId).lean();
     res.render("editview", { ...oneAnime, ...editFormOptions(animeId) , class: 'backgroundColor' });
-    console.log(trailer)
   } catch (err) {
     console.log(err);
   }
@@ -73,8 +73,11 @@ const createAnime = async (req, res) => {
     if (req.file !== undefined) {
       imgRequire = req.file.path
     }
+    // https://youtu.be/ZPdMeNFx1TM
+    // https://www.youtube.com/watch?v=cN0ZvBL1Ia4
     let url = trailer
     url = url.replace('/watch?v=','/embed/')
+    // url = url.replace('.be/','be.com/embed/')
     console.log("url replace:", url) 
     const anime = await Animes.create({
       name,
@@ -100,17 +103,19 @@ const createAnime = async (req, res) => {
 const updateAnime = async (req, res) => {
   try {
     const { animeId } = req.params;
-    const { name, category, rate, description,trailer } = req.body;
+    const { name, category, rate, description, trailer, image } = req.body;
+    let animeToUpdate = await Animes.findById(animeId)
+    // console.log("existingImg", existingImg)
     let imageUrl;
   if (req.file) {
     imageUrl = req.file.path;
   } else {
-    imageUrl = req.body.existingImage;
+    imageUrl = animeToUpdate.image
   }
-  
+  console.log("req.file console", req.file)
   let url = trailer
-    url = url.replace('/watch?v=','/embed/')
-    console.log("url replace:", url) 
+  url = url.replace('/watch?v=','/embed/')
+  console.log("url replace:", url) 
 
     const updatedAnime = await Animes.findByIdAndUpdate(animeId, {
       name,
@@ -118,8 +123,7 @@ const updateAnime = async (req, res) => {
       rate,
       description,
       image: imageUrl,
-      trailer:url
-
+      trailer: url,
     });
      res.redirect("/animes");
   } catch (err) {
@@ -157,6 +161,5 @@ module.exports = {
   updateAnime,
   deleteAnime,
   getUser,
-  animeEditView,
   getAnimeEdit,
 };
