@@ -1,11 +1,19 @@
 
 <h1 class="viewtittle">User Profile</h1>
+
+<button type="button" class="btn btn-success float-button-right" data-toggle="modal" data-target="#exampleModal">
+ <i class="fas fa-plus"></i> Add anime
+</button>
+
+
   {{> animeCreate}}
+
+
   <div class="container">
     <div class="row">
         <div class="col-lg-12 my-3">
             <div class="pull-right">
-                <div class="btn-group">
+                <div class="btn-group d-none d-md-block">
                     <button class="btn btn-info" id="list">
                         List View
                     </button>
@@ -17,9 +25,9 @@
         </div>
     </div>
     <h1 class="viewtittle">Your Posts</h1>
-    {{#each animes}}
+        <div id="products" class="row view-group">
+{{#each animes}}
     
-    <div id="products" class="row view-group">
         <div class="item col-xs-4 col-lg-4">
             <div class="thumbnail card">
                 <div class="img-event">
@@ -50,5 +58,5 @@
                 </div>
             </div>
         </div>
-    </div>
-    {{/each}}
+    {{/each}}   
+     </div>
