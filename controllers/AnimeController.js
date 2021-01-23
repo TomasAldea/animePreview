@@ -57,7 +57,7 @@ const createAnime = async (req, res) => {
     if (req.file !== undefined) {
       imgRequire = req.file.path
     }
-    var url = trailer
+    let url = trailer
     url = url.replace('/watch?v=','/embed/')
     console.log("url replace:", url) 
     const anime = await Animes.create({
@@ -84,20 +84,26 @@ const createAnime = async (req, res) => {
 const updateAnime = async (req, res) => {
   try {
     const { animeId } = req.params;
-    const { name, category, rate, description } = req.body;
+    const { name, category, rate, description,trailer } = req.body;
     let imageUrl;
   if (req.file) {
     imageUrl = req.file.path;
   } else {
     imageUrl = req.body.existingImage;
   }
+  
+  let url = trailer
+    url = url.replace('/watch?v=','/embed/')
+    console.log("url replace:", url) 
 
-    const updatedCelebrity = await Animes.findByIdAndUpdate(animeId, {
+    const updatedAnime = await Animes.findByIdAndUpdate(animeId, {
       name,
       category,
       rate,
       description,
-      image: imageUrl
+      image: imageUrl,
+      trailer:url
+
     });
     res.redirect(`/animes/${animeId}`);
   } catch (err) {
