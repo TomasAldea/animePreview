@@ -4,6 +4,11 @@ const User = require("../models/User.model");
 const fileParser = require("./../configs/cloudinary.config")
 
 
+const animeEditView = (req, res) => { 
+  res.render("editview")
+}
+
+
 const deleteFormOptions = (animeId) => ({
   action: `/animes/${animeId}`,
   btnText: "delete anime",
@@ -43,6 +48,17 @@ const getAnime = async (req, res) => {
     const { animeId } = req.params;
     const oneAnime = await Animes.findById(animeId).lean();
     res.render("anime-detail", { ...oneAnime, ...editFormOptions(animeId) , class: 'backgroundColor' });
+    console.log(trailer)
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const getAnimeEdit = async (req, res) => {
+  try {
+    const { animeId } = req.params;
+    const oneAnime = await Animes.findById(animeId).lean();
+    res.render("editview", { ...oneAnime, ...editFormOptions(animeId) , class: 'backgroundColor' });
     console.log(trailer)
   } catch (err) {
     console.log(err);
@@ -105,7 +121,7 @@ const updateAnime = async (req, res) => {
       trailer:url
 
     });
-    res.redirect(`/animes/${animeId}`);
+     res.redirect("/animes");
   } catch (err) {
     console.log(err);
   }
@@ -141,4 +157,6 @@ module.exports = {
   updateAnime,
   deleteAnime,
   getUser,
+  animeEditView,
+  getAnimeEdit,
 };
