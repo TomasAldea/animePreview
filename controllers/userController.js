@@ -48,13 +48,13 @@ const signup = async (req, res) => {
     const isAlreadyName = await NewUser.findOne({ username });
     
     if (isAlreadyEmail) {
-      return res.render("signup", {message: "this email already exist"});
+      return res.render("signup", {message: "this email already exist" , class: 'home'});
     }
     if (isAlreadyName) {
-      return res.render("signup", {message: "this name already exist"});
+      return res.render("signup", {message: "this name already exist" , class: 'home'});
     }
     if(!hasCorrectPasswordFormat(password)){
-      return res.render("signup", {message: "incorrect password format"});
+      return res.render("signup", {message: "incorrect password format" , class: 'home'});
     }
 
     const saltRounds = 10;
@@ -83,11 +83,11 @@ const login = async (req, res) => {
     const { password, email } = req.body;
     const user = await NewUser.findOne({ email });
     if (!user) {
-      return res.render("logIn", {message: "email does not exist"});
+      return res.render("logIn", {message: "email does not exist"  , class: 'home' });
     }
     const verifyPassword = await bcrypt.compare(password, user.passwordHash); // comparamos password con hash password de la data base
     if (!verifyPassword) {
-      return res.render("logIn", {message: "wrong password"});
+      return res.render("logIn", {message: "wrong password" , class: 'home'});
     }
     req.session.currentUser = user // persistimos la sesion
     return res.redirect("/animes");
