@@ -6,6 +6,8 @@ const {
   updateAnime,
   deleteAnime,
   getUser,
+  animeEditView,
+  getAnimeEdit,
 } = require("../controllers/AnimeController");
 const router = express.Router();
 
@@ -18,6 +20,7 @@ router
   .get("/animes", getAnimes)
   .get("/animes/userprofile", userSecureRoute, getUser)
   .get("/animes/:animeId", userSecureRoute, getAnime)
+  .get("/animes/:animeId/editview",getAnimeEdit, animeEditView )
   .post("/animes/", fileParser.single("image"), userSecureRoute, createAnime)
   .patch("/animes/:animeId",fileParser.single("image"), updateAnime)
   .delete("/animes/:animeId", deleteAnime)
