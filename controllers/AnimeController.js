@@ -3,11 +3,6 @@ const { userSecureRoute } = require("./userController");
 const User = require("../models/User.model");
 const fileParser = require("./../configs/cloudinary.config")
 
-/*
-const animeEditView = (req, res) => { 
-  res.render("editview")
-}
-*/
 
 const deleteFormOptions = (animeId) => ({
   action: `/animes/${animeId}`,
@@ -49,7 +44,7 @@ const getAnime = async (req, res) => {
     const { animeId } = req.params;
     const oneAnime = await Animes.findById(animeId).lean();
     res.render("anime-detail", { ...oneAnime, ...editFormOptions(animeId) , class: 'backgroundColor' });
-    console.log(trailer)
+    
   } catch (err) {
     console.log(err);
   }
@@ -73,11 +68,17 @@ const createAnime = async (req, res) => {
     if (req.file !== undefined) {
       imgRequire = req.file.path
     }
-    // https://youtu.be/ZPdMeNFx1TM
-    // https://www.youtube.com/watch?v=cN0ZvBL1Ia4
+     // https://youtu.be/ZPdMeNFx1TM -> mobile youtube format
+    // https://www.youtube.com/watch?v=cN0ZvBL1Ia4 -> desktop youtube format
+    // function to change url string
     let url = trailer
-    url = url.replace('/watch?v=','/embed/')
-    url = url.replace('.be/','be.com/embed/')
+    if (url.includes("/watch?v=")) {
+      url = url.replace('/watch?v=','/embed/')
+    } 
+    if (url.includes(".be/")) {
+      url = url.replace('.be/','be.com/embed/')
+    }
+    
     console.log("url replace:", url) 
     const anime = await Animes.create({
       name,
@@ -112,10 +113,15 @@ const updateAnime = async (req, res) => {
   } else {
     imageUrl = animeToUpdate.image
   }
-  console.log("req.file console", req.file)
+
+  // function to change url string
   let url = trailer
-  url = url.replace('/watch?v=','/embed/')
-  console.log("url replace:", url) 
+  if (url.includes("/watch?v=")) {
+    url = url.replace('/watch?v=','/embed/')
+  } 
+  if (url.includes(".be/")) {
+    url = url.replace('.be/','be.com/embed/')
+  }
 
     const updatedAnime = await Animes.findByIdAndUpdate(animeId, {
       name,
@@ -135,7 +141,6 @@ const deleteAnime = async (req, res) => {
   try {
     const { animeId } = req.params;
     const deletedanime = await Animes.findByIdAndDelete(animeId);
-    console.log("deleted anime", deletedanime);
     res.redirect("/animes");
   } catch (err) {
     console.log(err);
