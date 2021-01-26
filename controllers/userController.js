@@ -35,7 +35,7 @@ const checkCredentials = (req, res, next) => {
   const { password, username, email } = req.body;
   const hasMissingCredential = !username || !password || !email;
   if (hasMissingCredential) {
-    return res.send("credentials missing");
+    return res.render("signup", {message: "credentials missing" , class: 'home'});
   }
   next();
 };
