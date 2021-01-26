@@ -68,7 +68,7 @@ const createAnime = async (req, res) => {
     if (req.file !== undefined) {
       imgRequire = req.file.path
     }
-     // https://youtu.be/ZPdMeNFx1TM -> mobile youtube format
+    // https://youtu.be/ZPdMeNFx1TM -> mobile youtube format
     // https://www.youtube.com/watch?v=cN0ZvBL1Ia4 -> desktop youtube format
     // function to change url string
     let url = trailer

@@ -2,14 +2,31 @@ const mongoose = require("mongoose")
 const Schema = mongoose.Schema;
 
 const AnimeSchema = new Schema({
-    name: String,
-    category : String,
-    rate: Number,
-    image: String,
-    description: String,
-    trailer: String,
+    name: {
+        type: String,
+        required: true,
+    },
+    category : {
+        type: String,
+        required: true,
+    },
+    rate: {
+        type: Number,
+        required: true,
+    },
+    image: {
+        type: String,
+        required: true,
+    },
+    description: {
+        type: String,
+        required: true,
+    },
+    trailer: {
+        type: String,
+        required: true,
+    },
     owner: { type: Schema.Types.ObjectId, ref: "User.model" } 
-
 })
 
 module.exports = mongoose.model("Anime.model", AnimeSchema)
