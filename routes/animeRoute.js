@@ -23,8 +23,9 @@ router
   .get("/animes/:animeId/editview", getAnimeEdit)
   .post("/animes/", fileParser.single("image"), userSecureRoute, createAnime)
   .post("/animes/:animeId",fileParser.single("image"), updateAnime)
+  .post("/animes/rate/:animeId", rateButton)
   .delete("/animes/:animeId", deleteAnime)
-  .get("/animes/rate/:animeId", rateButton)
+  
 
 module.exports = router;
 

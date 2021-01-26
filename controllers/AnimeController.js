@@ -164,11 +164,9 @@ const getUser = async (req, res) => {
 
 const rateButton = async (req, res) => {
   try {
-    const { animeId } = req.params;
-    const one = await Animes.findById(animeId).lean();
     
-    res.render("animes", { ...one, ...editFormOptions(animeId) , class: 'backgroundColor' });
-    console.log("animeId", animeId)
+    
+
   } catch (err) {
     console.log(err);
   }

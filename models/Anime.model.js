@@ -4,25 +4,25 @@ const Schema = mongoose.Schema;
 const AnimeSchema = new Schema({
     name: { 
        type: String,
-       require: true,
+       required: true,
     }, 
     category: {
       type: String,
-      require: true,
+      required: true,
     },
     image: {
       type: String,
-      require: true,
+      required: true,
     },
     description: {
       type: String,
-      require: true,
+      required: true,
     },
     trailer: {
         type: String,
-        require: true,
+        required: true,
     },
-    rate: [],
+    rate: Number,
     owner: { type: Schema.Types.ObjectId, ref: "User.model" } 
 })
 
