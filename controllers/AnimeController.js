@@ -61,7 +61,7 @@ const getAnimeEdit = async (req, res) => {
 };
 
 const createAnime = async (req, res) => {
-  console.log("SESSION:", req.session.currentUser._id)
+
   try {
     const { name, category, rate, description, trailer } = req.body;
     let imgRequire;
@@ -159,6 +159,22 @@ const getUser = async (req, res) => {
   }
 };
 
+////////////////////////////////////////////////////////
+
+
+const rateButton = async (req, res) => {
+  try {
+    const { animeId } = req.params;
+    const one = await Animes.findById(animeId).lean();
+    
+    res.render("animes", { ...one, ...editFormOptions(animeId) , class: 'backgroundColor' });
+    console.log("animeId", animeId)
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+
 module.exports = {
   getAnimes,
   getAnime,
@@ -167,4 +183,5 @@ module.exports = {
   deleteAnime,
   getUser,
   getAnimeEdit,
+  rateButton,
 };
