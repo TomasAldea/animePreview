@@ -21,10 +21,10 @@ router
   .get("/animes/userprofile", userSecureRoute, getUser)
   .get("/animes/:animeId", userSecureRoute, getAnime)
   .get("/animes/:animeId/editview", getAnimeEdit)
+  .post("/animes/:animeId/rate", rateButton)
   .post("/animes/", fileParser.single("image"), userSecureRoute, createAnime)
-  .post("/animes/:animeId",fileParser.single("image"), updateAnime)
-  .post("/animes/rate/:animeId", rateButton)
-  .delete("/animes/:animeId", deleteAnime)
+  .post("/animes/:animeId/edit",fileParser.single("image"), updateAnime)
+  .delete("/animes/:animeId/delete", deleteAnime)
   
 
 module.exports = router;

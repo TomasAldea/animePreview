@@ -1,6 +1,6 @@
 
 
-<form action="" method="POST">
-  <input type="number" hidden name="rate">
-  <button class="btn btn-outline-primary" type="submit">like</button>
+<form action="{{rate.action}}" method="{{method}}">
+  <input type="text" hidden name="_method" value={{restMethod}}>
+  <button class="btn btn-outline-primary" type="{{btnText}}">like</button>
   </form>

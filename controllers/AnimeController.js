@@ -4,35 +4,48 @@ const User = require("../models/User.model");
 const fileParser = require("./../configs/cloudinary.config")
 
 
-const deleteFormOptions = (animeId) => ({
-  action: `/animes/${animeId}`,
-  btnText: "delete anime",
-  method: "POST",
-  restMethod: "DELETE",
-});
+function addActionsInformation(animes) {
+  return animes.map((anime) => ({
+    ...anime,
+    delete: {
+      action: `/animes/${anime._id}/delete`,
+      btnText: "delete",
+      method: "DELETE",
+    },
+    rate: {
+      action: `/animes/${anime._id}/rate`,
+      btnText: "rate",
+      method: "POST",
+    },
+  }));
+}
 
-function animeDeleteOptions(oneAnime) {
-  const deleteOptions = deleteFormOptions(oneAnime._id);
+
+function animeOptions(oneAnime) {
+  const optionsAnime = addActionsInformation(oneAnime._id);
   return {
     ...oneAnime,
-    ...deleteOptions,
+    ...optionsAnime,
   };
 }
 
 const getAnimes = async (req, res) => {
   try {
     const anime = await Animes.find().lean().populate("owner")
-    const animesDeleted = anime.map(animeDeleteOptions);
-    
+    const animesDeleted = animes.map(animeOptions);
+    const animes = await Animes.find({}).populate('owner').lean()
+    const animeWithActions = addActionsInformation(animes)
+    return res.render('animes', {animes: animeWithActions, class: 'backgroundColor'})
+
   
-    res.render("animes", { anime: animesDeleted , class: 'backgroundColor'  });
+   // res.render("animes", { anime: animesDeleted , class: 'backgroundColor'  });
   } catch (err) {
     console.log(err);
   }
 };
 
 const editFormOptions = (animeId) => ({
-  action: `/animes/${animeId}`,
+  action: `/animes/${animeId}/edit`,
   btnText: "edit anime",
   method: "POST",
   restMethod: "PATCH",
@@ -161,16 +174,50 @@ const getUser = async (req, res) => {
 
 ////////////////////////////////////////////////////////
 
-
 const rateButton = async (req, res) => {
   try {
-    
-    
-
+    const { animeId } = req.params;
+    const updateAnime = await Animes.findByIdAndUpdate(animeId, {
+      rate: oneAnime.rate++
+    })
+    return res.redirect("/animes");
   } catch (err) {
     console.log(err);
   }
 };
+
+/*
+const rateFormOptions = (animeId) => ({
+  action: `/animes/${animeId}/rate`,
+  btnText: "LIKE",
+  method: "POST",
+  restMethod: "PATCH",
+});
+function animeRateOptions(oneAnime) {
+  const rateOptions = rateFormOptions(oneAnime._id);
+  return {
+    ...oneAnime,
+    ...rateOptions,
+  };
+}
+
+const rateButton = async (req, res) => {
+  try {
+    const { animeId } = req.params;
+    const oneAnime = await Animes.findById(animeId).lean();
+    console.log("animeId", oneAnime )
+    const updateAnime = await Animes.findByIdAndUpdate(animeId, {
+      rate: oneAnime.rate++
+    },{new:true})
+    const animesRateMap = anime.map(animeRateOptions);
+    console.log("rate updated:", updateAnime.rate)
+
+  return res.render("animes", {oneAnime: animesRateMap});
+  } catch (err) {
+    console.log(err);
+  }
+};
+*/
 
 
 module.exports = {
@@ -181,5 +228,6 @@ module.exports = {
   deleteAnime,
   getUser,
   getAnimeEdit,
+  addActionsInformation,
   rateButton,
 };
