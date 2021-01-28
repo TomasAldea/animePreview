@@ -3,13 +3,30 @@ const { userSecureRoute } = require("./userController");
 const User = require("../models/User.model");
 const fileParser = require("./../configs/cloudinary.config")
 
-
+/*
 const deleteFormOptions = (animeId) => ({
   action: `/animes/${animeId}`,
   btnText: "delete anime",
   method: "POST",
   restMethod: "DELETE",
 });
+*/
+
+function addActionsInformation(animes) {
+  return animes.map((anime) => ({
+    ...anime,
+    delete: {
+      action: `/animes/${anime._id}/delete`,
+      btnText: "delete",
+      method: "DELETE",
+    },
+    rateOptions: {
+      action: `/animes/${anime._id}/rate`,
+      btnText: "rate",
+      method: "POST",
+    },
+  }));
+}
 
 function animeDeleteOptions(oneAnime) {
   const deleteOptions = deleteFormOptions(oneAnime._id);
@@ -21,11 +38,12 @@ function animeDeleteOptions(oneAnime) {
 
 const getAnimes = async (req, res) => {
   try {
-    const anime = await Animes.find().lean().populate("owner")
-    const animesDeleted = anime.map(animeDeleteOptions);
-    
+   
+    const animes = await Animes.find({}).populate('owner').lean()
+    const animeWithActions = addActionsInformation(animes)
+    //console.log("animeWithActions", animeWithActions)
+    return res.render('animes', {animes: animeWithActions , class: 'backgroundColor'})
   
-    res.render("animes", { anime: animesDeleted , class: 'backgroundColor'  });
   } catch (err) {
     console.log(err);
   }
@@ -147,6 +165,22 @@ const deleteAnime = async (req, res) => {
   }
 };
 
+const likeAddAnime = async (req, res) => {
+  try {
+    let { rate } = req.body;
+    const { animeId } = req.params;
+    let newRate = Number(rate) + 1
+    const likeAnimes = await Animes.findByIdAndUpdate(animeId, {
+      rate: newRate,
+    },{new:true});
+   console.log("likeAnimes", likeAnimes)
+    res.redirect("/animes");
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+
 const getUser = async (req, res) => {
   try {
     const oneUser = await User.findById(req.session.currentUser._id)
@@ -167,4 +201,5 @@ module.exports = {
   deleteAnime,
   getUser,
   getAnimeEdit,
+  likeAddAnime,
 };
