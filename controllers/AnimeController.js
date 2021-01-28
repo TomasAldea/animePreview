@@ -3,7 +3,7 @@ const { userSecureRoute } = require("./userController");
 const User = require("../models/User.model");
 const fileParser = require("./../configs/cloudinary.config")
 
-
+/*
 function addActionsInformation(animes) {
   return animes.map((anime) => ({
     ...anime,
@@ -39,6 +39,31 @@ const getAnimes = async (req, res) => {
 
   
    // res.render("animes", { anime: animesDeleted , class: 'backgroundColor'  });
+  } catch (err) {
+    console.log(err);
+  }
+};
+*/
+
+const deleteFormOptions = (animeId) => ({
+  action: `/animes/${animeId}`,
+  btnText: "delete anime",
+  method: "POST",
+  restMethod: "DELETE",
+});
+function animeDeleteOptions(oneAnime) {
+  const deleteOptions = deleteFormOptions(oneAnime._id);
+  return {
+    ...oneAnime,
+    ...deleteOptions,
+  };
+}
+
+const getAnimes = async (req, res) => {
+  try {
+    const anime = await Animes.find().lean().populate("owner")
+    const animesDeleted = anime.map(deleteFormOptions);
+    res.render("animes", { anime: animesDeleted , class: 'backgroundColor'  });
   } catch (err) {
     console.log(err);
   }
@@ -228,6 +253,6 @@ module.exports = {
   deleteAnime,
   getUser,
   getAnimeEdit,
-  addActionsInformation,
+ // addActionsInformation,
   rateButton,
 };
