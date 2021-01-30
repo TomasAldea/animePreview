@@ -24,7 +24,7 @@ router
   .post("/animes/:animeId/rate", likeAddAnime)
   .post("/animes/", fileParser.single("image"), userSecureRoute, createAnime)
   .post("/animes/:animeId",fileParser.single("image"), updateAnime)
-  .delete("/animes/:animeId", deleteAnime)
+  .post("/animes/:animeId/delete", deleteAnime)
 
 module.exports = router;
 
