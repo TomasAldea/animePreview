@@ -29,7 +29,7 @@ function addActionsInformation(animes) {
 }
 
 function animeDeleteOptions(oneAnime) {
-  const deleteOptions = deleteFormOptions(oneAnime._id);
+  const deleteOptions = addActionsInformation(oneAnime._id);
   return {
     ...oneAnime,
     ...deleteOptions,
@@ -186,7 +186,8 @@ const getUser = async (req, res) => {
     const oneUser = await User.findById(req.session.currentUser._id)
     .populate("createAnime").lean();
    
-    const animes = oneUser.createAnime.map(animeDeleteOptions);
+   // const animes = oneUser.createAnime.map(animeDeleteOptions);
+    const animes = addActionsInformation(oneUser.createAnime)
     res.render("userprofile", {oneUser,  animes , class: 'backgroundColor' } );
   } catch (err) {
     console.log(err);
